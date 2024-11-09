@@ -2,24 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
 use App\Models\Branch;
 use Illuminate\Http\Request;
-use App\Imports\BranchImport;
-use App\Imports\DailySalesTransactionImport;
-use App\Imports\GuestCountImport;
-use App\Imports\SalesTransactionCountImport;
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Redirect;
-use App\Imports\SalesTransactionDiscountChargeImport;
-use App\Imports\SalesTransactionImport;
-use App\Imports\SalesTransactionJournalImport;
-use App\Models\DailySalesTransaction;
-use App\Models\GuestCount;
-use App\Models\SalesTransaction;
-use App\Models\SalesTransactionCount;
-use App\Models\SalesTransactionDiscountCharge;
-use App\Models\SalesTransactionJournal;
+use Inertia\Inertia;
 
 class BranchController extends Controller
 {
@@ -66,21 +52,8 @@ class BranchController extends Controller
     public function show(Branch $branch)
     {
         //
-        $salesTransactions = SalesTransaction::all();
-        $journals = SalesTransactionJournal::all();
-        $dailysales = DailySalesTransaction::all();
-        $counts = SalesTransactionCount::all();
-        $guestcounts = GuestCount::all();
-        $discountcharges = SalesTransactionDiscountCharge::all();
-
         return Inertia::render('Admin/Branches/BranchSales', [
-            'branch' => $branch,
-            'salestransactions' => $salesTransactions,
-            'journals' => $journals,
-            'dailysales' => $dailysales,
-            'counts' => $counts,
-            'guestcounts' => $guestcounts,
-            'discountcharges' => $discountcharges,
+            'branches' => $branch
         ]);
     }
 
@@ -106,116 +79,5 @@ class BranchController extends Controller
     public function destroy(Branch $branch)
     {
         //
-    }
-
-    // public function importBranches(Request $request)
-    // {
-    //     $request->validate([
-    //         'file' => 'required|mimes:csv,txt', // Validation for CSV file
-    //     ]);
-
-    //     $path = $request->file('file')->store('temp');
-
-    //     // Import the CSV file into the Branch model
-    //     Excel::import(new BranchImport, storage_path('app/'.$path));
-
-    //     return redirect()->route('branches.index')->with('success', 'Branches imported successfully!');
-    // }
-
-    public function csvimports()
-    {
-        return Inertia::render('Admin/Branches/CsvImports');
-    }
-
-    /**
-     * Import Sales Transaction data from an Excel file.
-     */
-    public function importSalesTransactionDiscountCharges(Request $request)
-    {
-        $request->validate([
-            'file' => 'required|mimes:csv,txt',
-        ]);
-
-        $path = $request->file('file')->store('temp');
-
-        // Import the data
-        Excel::import(new SalesTransactionDiscountChargeImport, storage_path('app/'.$path));
-
-        return redirect()->route('branches.index')->with('success', 'Branches imported successfully!');
-    }
-
-
-    public function importGuestCounts(Request $request)
-    {
-        $request->validate([
-            'file' => 'required|mimes:csv,txt',
-        ]);
-
-        $path = $request->file('file')->store('temp');
-
-        // Import the data
-        Excel::import(new GuestCountImport(), storage_path('app/'.$path));
-
-        return redirect()->route('branches.index')->with('success', 'Branches imported successfully!');
-    }
-
-
-    public function importSalesTransactionCounts(Request $request)
-    {
-        $request->validate([
-            'file' => 'required|mimes:csv,txt',
-        ]);
-
-        $path = $request->file('file')->store('temp');
-
-        // Import the data
-        Excel::import(new SalesTransactionCountImport(), storage_path('app/'.$path));
-
-        return redirect()->route('branches.index')->with('success', 'Branches imported successfully!');
-    }
-
-
-    public function importDailySalesTransactions(Request $request)
-    {
-        $request->validate([
-            'file' => 'required|mimes:csv,txt',
-        ]);
-
-        $path = $request->file('file')->store('temp');
-
-        // Import the data
-        Excel::import(new DailySalesTransactionImport(), storage_path('app/'.$path));
-
-        return redirect()->route('branches.index')->with('success', 'Branches imported successfully!');
-    }
-
-
-    public function importSalesTransactions(Request $request)
-    {
-        $request->validate([
-            'file' => 'required|mimes:csv,txt',
-        ]);
-
-        $path = $request->file('file')->store('temp');
-
-        // Import the data
-        Excel::import(new SalesTransactionImport(), storage_path('app/'.$path));
-
-        return redirect()->route('branches.index')->with('success', 'Branches imported successfully!');
-    }
-
-
-    public function importSalesTransactionJournals(Request $request)
-    {
-        $request->validate([
-            'file' => 'required|mimes:csv,txt',
-        ]);
-
-        $path = $request->file('file')->store('temp');
-
-        // Import the data
-        Excel::import(new SalesTransactionJournalImport(), storage_path('app/'.$path));
-
-        return redirect()->route('branches.index')->with('success', 'Branches imported successfully!');
     }
 }

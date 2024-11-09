@@ -55,4 +55,9 @@ class User extends Authenticatable
     // {
     //     return $this->belongsToMany(Role::class);
     // }
+
+    public function deliveries()
+    {
+        return $this->hasMany(Delivery::class, 'agent', 'id');
+    }
 }

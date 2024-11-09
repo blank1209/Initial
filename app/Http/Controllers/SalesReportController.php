@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sale;
 use Inertia\Inertia;
 use App\Models\Branch;
 use App\Models\Client;
 use App\Models\Product;
+use App\Models\SaleItem;
 use App\Models\SaleType;
 use App\Models\SalesReport;
 use Illuminate\Http\Request;
@@ -23,9 +25,10 @@ class SalesReportController extends Controller
             'salesreports' => SalesReport::all(),
             'clients' => Client::all(),
             'productcategories' => ProductCategory::all(),
-            'products' => Product::all(),
+            'products' => Product::with(['productcategories', 'truckloaditems.saleitems.sale'])->get(),
             'branches' => Branch::all(),
             'saletypes' => SaleType::all(),
+            'sales' => Sale::with(['delivery.saletypes', 'delivery.users', 'saletype', 'truck', 'saleitems.truckloaditems.products.productprices'])->get(),
         ]);
     }
 

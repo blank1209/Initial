@@ -43,7 +43,7 @@ function destroy(id) {
                         <tr>
                             <th scope="col" class="px-6 py-3">Supplier Name</th>
                             <th scope="col" class="px-6 py-3">Address</th>
-                            <th scope="col" class="px-6 py-3">Tel No.</th>
+                            <th scope="col" class="px-6 py-3">Contact No.</th>
                             <th scope="col" class="px-6 py-3">Actions</th>
                         </tr>
                     </thead>

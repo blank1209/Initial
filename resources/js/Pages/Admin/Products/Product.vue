@@ -34,11 +34,11 @@ function destroy(id) {
                             Category
                         </PrimaryButton>
                     </Link>
-                    <Link :href="route('areas.index')" class="btn btn-primary">
+                    <!-- <Link :href="route('areas.index')" class="btn btn-primary">
                         <PrimaryButton class="p-2">
                             Area
                         </PrimaryButton>
-                    </Link>
+                    </Link> -->
                     <Link :href="route('products.create')" class="btn btn-primary">
                         <PrimaryButton class="p-2">
                             Create

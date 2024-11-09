@@ -100,7 +100,6 @@ const submit = () => {
 }
 </script>
 
-
 <template>
     <Head title="Order Form" />
 

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use Illuminate\Database\Seeder;
+use Database\Seeders\ProductSeeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -28,7 +29,7 @@ class ProductSeeder extends Seeder
         ],
 
         [
-            'productCategory' => '2',
+            'productCategory' => '1',
             'productName' => 'Cheese Buns',
             'unit' => 'Pack x8',
             'quantity'=> '50',

@@ -24,4 +24,9 @@ class Branch extends Model
     public function users(){
         return $this->belongsTo(User::class, 'contactPerson', 'id');
     }
+
+    public function sales(){
+        return $this->hasMany(Sale::class, 'branch', 'branchID');
+    }
 }
+

@@ -17,9 +17,11 @@ return new class extends Migration
             $table->string('salesStatus', 15)->nullable();
             $table->unsignedBigInteger('deliveryID')->nullable();
             $table->unsignedBigInteger('userName');
+            $table->unsignedBigInteger('branch');
 
             $table->foreign('deliveryID')->references('deliveryID')->on('deliveries')->onDelete('cascade');
             $table->foreign('userName')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('branch')->references('branchID')->on('branches')->onDelete('cascade');
         });
     }
 

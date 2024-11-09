@@ -47,11 +47,6 @@ const submit = () => {
                         </div>
                     </div>
                     <div class="space-x-5">
-                        <Link href="/suppliers" class="btn btn-primary">
-                            <PrimaryButton>
-                                Cancel
-                            </PrimaryButton>
-                        </Link>
 
                         <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                             Create
@@ -76,7 +71,7 @@ const submit = () => {
                 </div>
 
                 <div>
-                    <InputLabel for="contactNumber" class="mb-2">Tel No.</InputLabel>
+                    <InputLabel for="contactNumber" class="mb-2">Contact Number</InputLabel>
                     <TextInput class="mt-1 block w-[50%]" id="contactNumber" type="text" v-model="form.contactNumber" required />
                     <InputError :message="form.errors.contactNumber" />
                 </div>

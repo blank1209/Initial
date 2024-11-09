@@ -82,7 +82,7 @@ function selectSupplier(supplier) {
                             </Link>
                         </div>
                         <div>
-                            <h3> Create Product </h3>
+                            <h3> Create Raw Material </h3>
                         </div>
                     </div>
                     <div class="space-x-5">

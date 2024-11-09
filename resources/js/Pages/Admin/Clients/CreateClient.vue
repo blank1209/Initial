@@ -88,7 +88,7 @@ const submit = () => {
                 </div>
 
                 <div>
-                    <InputLabel for="clientContact" class="mb-2">Tel No.</InputLabel>
+                    <InputLabel for="clientContact" class="mb-2">Contact No.</InputLabel>
                     <TextInput class="mt-1 block w-[50%]" id="clientContact" type="text" v-model="form.clientContact" required />
                     <InputError :message="form.errors.clientContact" />
                 </div>

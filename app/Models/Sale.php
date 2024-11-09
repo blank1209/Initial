@@ -36,4 +36,9 @@ class Sale extends Model
     {
         return $this->hasMany(SaleItem::class, 'salesID', 'salesID');
     }
+
+    public function branches()
+    {
+        return $this->belongsTo(Branch::class, 'branch', 'branchID');
+    }
 }
